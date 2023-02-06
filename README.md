@@ -1,6 +1,6 @@
 # Gossip_MVC
 Week 4 Day 5 - "The Gossip Project" using Model-View-Controller (MVC) framework (Model = Gossip)
-A little app that allows the user to save a gossip in a CSV file, view and delete existing gossips.
+A little app that allows the user to save a gossip in a CSV file, view the list of existing gossips and delete a gossip.
 
 ## Main program
 Launch the main program "app.rb" to start the Router, which calls the Controller, which then calls the View and Gossip classes.
