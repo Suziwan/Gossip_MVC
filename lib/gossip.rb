@@ -1,33 +1,36 @@
 require 'csv'
 
-class Gossip 
+class Gossip
   attr_reader :author, :content
 
-  def initialize(author, content)
+  def initialize(author, content, data_source = './db/gossip.csv')
     @author = author
     @content = content
+    @data_source = data_source
   end
 
   def save
     array_gossip = [@author, @content]
-    CSV.open("./db/gossip.csv", "a") do |csv|
+    CSV.open(@data_source, "a") do |csv|
       csv << array_gossip
     end
   end
 
-  def self.all 
+  def self.all
     all_gossips = []
-    CSV.foreach("./db/gossip.csv") do |gossip|
-      gossip_prov = Gossip.new(gossip[0], gossip[1])
-      all_gossips << gossip_prov
+    CSV.foreach(@data_source) do |author, content|
+      gossip = Gossip.new(author, content, @data_source)
+      all_gossips << gossip
     end
     return all_gossips
   end
 
-  def self.destroy_gossip(gossip_number)
-    gossips = CSV.read('./db/gossip.csv')
-    gossips.delete_at(gossip_number - 1)
-    CSV.open('db/gossip.csv', 'w') do |csv|
+  def self.destroy_gossip(gossip_id)
+    gossips = CSV.read(@data_source)
+    return if gossip_id >= gossips.size
+
+    gossips.delete_at(gossip_id - 1)
+    CSV.open(@data_source, 'w') do |csv|
       gossips.each do |gossip|
         csv << gossip
       end
