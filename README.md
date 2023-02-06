@@ -1,5 +1,5 @@
 # Gossip_MVC
-Week 4 Day 5 - "The Gossip Project" using Model-View-Controller (MVC) framework (Model = Gossip)
+Week 4 Day 5 - "The Gossip Project" using Model-View-Controller (MVC) architecture (Model = Gossip)
 A little app that allows the user to save a gossip in a CSV file, view the list of existing gossips and delete a gossip.
 
 ## Main program
