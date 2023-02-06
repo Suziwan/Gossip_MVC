@@ -17,11 +17,21 @@ class Gossip
 
   def self.all 
     all_gossips = []
-    CSV.foreach("./db/gossip.csv") do |row|
-      gossip_provisoire = Gossip.new(row[0], row[1])
-      all_gossips << gossip_provisoire
+    CSV.foreach("./db/gossip.csv") do |gossip|
+      gossip_prov = Gossip.new(gossip[0], gossip[1])
+      all_gossips << gossip_prov
     end
     return all_gossips
+  end
 
+  def self.destroy_gossip(gossip_number)
+    gossips = CSV.read('./db/gossip.csv')
+    deleted_gossip = gossips.delete_at(gossip_number - 1)
+    puts "You deleted the gossip : '#{deleted_gossip[0]} said : #{deleted_gossip[1]}'"
+    CSV.open('db/gossip.csv', 'w') do |csv|
+      gossips.each do |gossip|
+        csv << gossip
+      end
+    end
   end
 end

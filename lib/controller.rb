@@ -8,20 +8,19 @@ class Controller
 		@view = View.new
 	end
 
-	def create_gossip
-		params = @view.create_gossip#une methode dans le view qui a le meme nom
-		@gossip = Gossip.new(params[:author],params[:content])
+	def create_gossip # Méthode qui gère la création de potins
+		params = @view.create_gossip # Une méthode dans le view qui a le meme nom
+		gossip = Gossip.new(params[:author],params[:content])
 		gossip.save
 	end
 
-	def index_gossips
-		potins,ligne = Gossip.all
-		@view.index_gossips(potins)
-		return ligne.length
+	def index_gossips # Méthode qui gère l'affichage
+		gossips = Gossip.all
+		@view.index_gossips(gossips)
 	end
   
-	def destroy(index_of_potin)
-		del_potins = Gossip.destroy(index_of_potin)
-		@view.potins_delete(del_potins)
+	def destroy_gossip # Méthode qui permet de détruire un potin
+		params = @view.destroy_gossip
+    Gossip.destroy_gossip(params)
 	end
 end

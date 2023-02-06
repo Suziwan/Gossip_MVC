@@ -7,5 +7,4 @@ require 'controller'
 require 'gossip'
 require 'view'
 
-routeur = Router.new
-routeur.perform
+Router.new.perform
