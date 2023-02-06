@@ -22,4 +22,7 @@ This program allows communication with the "gossip.csv" file:
 - find a gossip and delete it from the CSV file
 
 ## 4) View
-In this class we generate our outputs (print, puts, gets.chomp) to ask the user to store gossips, display the list of gossips and chose a gossip to delete
+In this class we generate our outputs (print, puts, gets.chomp) for the 3 methods : 
+- ask the user to create new gossips (name and content)
+- display the list of existing gossips
+- choose a gossip to delete
