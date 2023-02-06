@@ -26,8 +26,7 @@ class Gossip
 
   def self.destroy_gossip(gossip_number)
     gossips = CSV.read('./db/gossip.csv')
-    deleted_gossip = gossips.delete_at(gossip_number - 1)
-    puts "You deleted the gossip : '#{deleted_gossip[0]} said : #{deleted_gossip[1]}'"
+    gossips.delete_at(gossip_number - 1)
     CSV.open('db/gossip.csv', 'w') do |csv|
       gossips.each do |gossip|
         csv << gossip
